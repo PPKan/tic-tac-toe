@@ -1,5 +1,6 @@
-require 'pry-byebug'
+# frozen_string_literal: true
 
+# The main game logic goes here
 class Game
   attr_reader :game_over, :all_filled, :turn
 
@@ -40,9 +41,6 @@ class Game
        (@gamepad[0][0] != ' ' && @gamepad[0][0] == @gamepad[1][1] && @gamepad[1][1] == @gamepad[2][2]) ||
        (@gamepad[0][2] != ' ' && @gamepad[0][2] == @gamepad[1][1] && @gamepad[1][1] == @gamepad[2][0])
 
-
-      binding.pry
-
       @game_over = true
 
     elsif @gamepad[0].all? { |i| i != ' ' } && @gamepad[1].all? { |i| i != ' ' } && @gamepad[2].all? { |i| i != ' ' }
@@ -73,6 +71,7 @@ class Game
   end
 end
 
+# The code runs here
 game = Game.new
 
 loop do
@@ -81,8 +80,6 @@ loop do
 
   break if finished
 end
-
-# binding.pry
 
 if game.all_filled
   puts 'OOPS! No one wins!'
